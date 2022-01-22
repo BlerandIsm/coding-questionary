@@ -1,17 +1,23 @@
-var quizQuestion = [
-    {
-    title: "question title",
-    answerOne: "one",
-    answerTwo: "two",
-    answerThree: "three",
-    answerFour: "four",
-    correct: "four"
-},
-]
+//section list
+var quizSections= document.querySelectorAll(".quiz-section");
 
-var indexNumber = 0
+//targeting start section
+var startSection = document.getElementById("start");
+var startBtm = document.getElementById("start-button");
 
-//create eventListener based on answer div
+//quiz questions sections
+var quizSection = document.getElementById("quiz-sections");
+var timeRemaining = document.getElementById("time-remaining");
+var question = document.getElementById("question");
+var choices = document.getElementById("choices");
+var choicesStatus = document.querySelectorAll(".choice-status");
+var correct = document.getElementById("correct");
+var wrong = document.getElementById("wrong");
 
-console.log(quizQuestion[indexNumber].title)
-quizQuestion[2].title
+// end of quiz
+var endSection = document.getElementById("end");
+var endTitle = document.getElementById("end-title");
+var score = document.getElementById ("score");
+var initialsInput = document.getElementById("initials");
+var submitScore= document.getElementById("submit-score");
+var errorMessage = document.getElementById("error-message");
