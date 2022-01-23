@@ -6,7 +6,7 @@ var startSection = document.getElementById("start");
 var startBtm = document.getElementById("start-button");
 
 //quiz questions sections
-var quizSection = document.getElementById("quiz-sections");
+var quizSection = document.getElementById("quiz-questions");
 var timeRemaining = document.getElementById("time-remaining");
 var question = document.getElementById("question");
 var choices = document.getElementById("choices");
@@ -41,4 +41,71 @@ var question4 = new Question("How do you round the number 7.25, to the nearest i
 var question5 = new Question("Which event occurs when the user clicks on an HTML element? ", 
   ["onchange ", "onmouseover", "onclick", "onmouseclick"], 3);
 var questionList = [question1,question2,question3,question4,question5];
-console.log("it work");
+
+var currentQuestion = 0;
+
+var totalTime = 75;
+var totalTimeInterval;
+var choiceStatusTimeout; 
+
+//after qustions we need to activate the event lister 
+
+startBtm.addEventListener('click', startQuiz);
+choices.addEventListener("click", processChoice);
+submitScore.addEventListener('submit', processInput);
+
+function startQuiz(){
+    showElement(quizSections, quizSection);
+    displayTime();
+    displayQuestion();
+    startTimer();
+}
+function showElement(siblingList, showElement) {
+    for (element of siblingList) {
+      hideElement(element);
+    }
+    showElement.classList.remove("hidden");
+  } 
+  function hideElement(element) {
+    if (!element.classList.contains("hidden")) {
+      element.classList.add("hidden");
+    }
+  }
+
+
+  function displayTime() {
+    timeRemaining.textContent = totalTime;
+  }
+  function startTimer() {
+    totalTimeInterval = setInterval(function() {
+      totalTime--;
+      displayTime();
+      checkTime();
+  
+    }, 1000);
+  }
+  function checkTime() {
+    if (totalTime <= 0) {
+      totalTime = 0;
+      endGame();
+    }
+  }
+
+  function displayQuestion() {
+    question.textContent = questionList[currentQuestion].question;
+  
+    displayChoiceList();
+  }
+
+  function displayChoiceList() {
+    choices.innerHTML = "";
+  
+    questionList[currentQuestion].choices.forEach(function(answer, index) {
+      const li = document.createElement("li");
+      li.dataset.index = index;
+      const button = document.createElement("button");
+      button.textContent = (index + 1) + ". " + answer;
+      li.appendChild(button);
+      choices.appendChild(li);
+    });
+  }
