@@ -7,9 +7,8 @@
 - In the end of the quiz the user has the chance to add their initial to save the score and compare it thanks to local storage where they can save all the results 
 - To see the highscore the user is sent to a different website where they can delete the score or come back to the test
 
-- ![How_the_quiz_looks].(images/highscore-face.jpg)
-- ![Highscore_website].(images/quiz-face.jpg)
-
+- ![How_the_quiz_looks](images/highscore-face.jpg)
+- ![Highscore_website](images/quiz-face.jpg)
 
 
 # Contributors 
